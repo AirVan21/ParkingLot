@@ -1,5 +1,5 @@
-FLAGS = -std=c++14 -Wall -Wextra
-CC    = g++
+FLAGS = -std=c++11 -Wall -Wextra
+CC    = clang++
 
 all: src/ParkingLot.o src/PlainTextReader.o src/main.cpp
 	$(CC) $(FLAGS) src/ParkingLot.o src/PlainTextReader.o src/main.cpp -o main

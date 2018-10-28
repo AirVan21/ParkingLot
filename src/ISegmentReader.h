@@ -9,5 +9,5 @@
 struct ISegmentReader
 {
     virtual ~ISegmentReader() {};
-    virtual std::vector<Segment> GetSchedule() = 0;
+    virtual const std::vector<Segment>& GetSchedule() = 0;
 };

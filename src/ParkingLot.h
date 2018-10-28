@@ -9,10 +9,14 @@ public:
     ParkingLot(const std::vector<Segment>& schedule);
     virtual ~ParkingLot() = default;
 
-private:
-    void ProcessSchedule(const std::vector<Segment>& schedule);
+public:
+    size_t GetBusyMinute() const;
 
 private:
-    static const size_t SCHEDULE_LENGTH;
-    std::vector<size_t> m_schedule;
+    void ProcessSchedule(const std::vector<Segment>& schedule);
+    bool IsDayCross(const Segment& segment) const;
+
+private:
+    static const size_t  SCHEDULE_LENGTH;
+    std::vector<int64_t> m_schedule;
 };
