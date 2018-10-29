@@ -29,7 +29,6 @@ void PlainTextReader::ParseSchedule()
     // Parses all time segments
     while (m_textFile >> hourStart >> delimeter >> minuteStart >> hourEnd >> delimeter >> minuteEnd)
     {
-        std::cout << hourStart << minuteStart << "  " << hourEnd << minuteEnd << std::endl;
         size_t saveStart = hourStart * 60 + minuteStart;
         size_t saveEnd = hourEnd * 60 + minuteEnd;
         m_schedule.push_back(Segment(saveStart, saveEnd));

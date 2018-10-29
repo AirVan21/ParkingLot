@@ -6,6 +6,9 @@
 
 #include "ISegmentReader.h"
 
+/**
+ * PlainTextReader - class which processes scedule from plain text file
+ */
 class PlainTextReader : public ISegmentReader
 {
 public:

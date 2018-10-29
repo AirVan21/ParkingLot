@@ -3,6 +3,9 @@
 
 #include "Segment.h"
 
+/**
+ * ParkingLot - class with repesents schedule processing logic
+ */
 class ParkingLot
 {
 public:
@@ -10,6 +13,10 @@ public:
     virtual ~ParkingLot() = default;
 
 public:
+    /**
+     * Returns the busiest minute on the parking lot
+     * @return serial number of the busiest minute
+     */
     size_t GetBusyMinute() const;
 
 private:
