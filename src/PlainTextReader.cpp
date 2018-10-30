@@ -4,21 +4,14 @@
 
 PlainTextReader::PlainTextReader(const std::string& pathToFile)
     : m_textFile(pathToFile, std::ifstream::in)
-{
-    ParseSchedule();
-}
+{}
 
 PlainTextReader::~PlainTextReader()
 {
     m_textFile.close();
 }
 
-const std::vector<Segment>& PlainTextReader::GetSchedule()
-{
-    return m_schedule;
-}
-
-void PlainTextReader::ParseSchedule()
+bool PlainTextReader::GetSegment(Segment& segment)
 {
     // Default parsing pattern is h:m h:m
     size_t hourStart = 0;
@@ -26,11 +19,20 @@ void PlainTextReader::ParseSchedule()
     size_t hourEnd = 0;
     size_t minuteEnd = 0;
     char delimeter = ':';
-    // Parses all time segments
-    while (m_textFile >> hourStart >> delimeter >> minuteStart >> hourEnd >> delimeter >> minuteEnd)
+    if (m_textFile >> hourStart >> delimeter >> minuteStart >> hourEnd >> delimeter >> minuteEnd)
     {
         size_t saveStart = hourStart * 60 + minuteStart;
         size_t saveEnd = hourEnd * 60 + minuteEnd;
-        m_schedule.push_back(Segment(saveStart, saveEnd));
+        segment = Segment(saveStart, saveEnd);
+        return true;
     }
+    else
+    {
+        return false;
+    }
+}
+
+bool PlainTextReader::IsOpen() const
+{
+    return m_textFile.is_open();
 }

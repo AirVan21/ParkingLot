@@ -4,7 +4,7 @@ CC    = g++
 all: src/ParkingLot.o src/PlainTextReader.o src/main.cpp
 	$(CC) $(FLAGS) src/ParkingLot.o src/PlainTextReader.o src/main.cpp -o main
 
-ParkingLot.o: src/Segment.h src/ParkingLot.h src/ParkingLot.cpp
+ParkingLot.o: src/ISegmentReader.h src/Segment.h src/ParkingLot.h src/ParkingLot.cpp
 	$(CC) $(FLAGS) src/ParkingLot.cpp -o ParkingLot.o
 
 PlainTextReader.o: src/PlainTextReader.h src/PlainTextReader.cpp src/ISegmentReader.h src/Segment.h

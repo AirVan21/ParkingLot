@@ -10,5 +10,17 @@
 struct ISegmentReader
 {
     virtual ~ISegmentReader() {};
-    virtual const std::vector<Segment>& GetSchedule() = 0;
+
+    /**
+     * Reads time segment
+     * @param segment where result will be written
+     * @return true if segment was read successfully
+     *         false otherwise
+     */
+    virtual bool GetSegment(Segment& segment) = 0;
+
+    /**
+     * Verifies that file was open successfully
+     */
+    virtual bool IsOpen() const = 0;
 };

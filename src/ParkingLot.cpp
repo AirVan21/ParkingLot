@@ -3,10 +3,12 @@
 // Minutes in a day
 const size_t ParkingLot::SCHEDULE_LENGTH = 60 * 24;
 
-ParkingLot::ParkingLot(const std::vector<Segment>& schedule)
+ParkingLot::ParkingLot(const std::shared_ptr<ISegmentReader>& segmentReader)
     : m_schedule(SCHEDULE_LENGTH, 0)
+    , m_reader(segmentReader)
+
 {
-    ProcessSchedule(schedule);
+    ProcessSchedule();
 }
 
 size_t ParkingLot::GetBusyMinute() const
@@ -27,9 +29,10 @@ size_t ParkingLot::GetBusyMinute() const
     return busyMinute;
 }
 
-void ParkingLot::ProcessSchedule(const std::vector<Segment>& schedule)
+void ParkingLot::ProcessSchedule()
 {
-    for (const auto& segment : schedule)
+    Segment segment;
+    while(m_reader->GetSegment(segment))
     {
         // Time segment edges are taken by module
         size_t minuteStart = segment.m_minuteStart % SCHEDULE_LENGTH;
@@ -46,7 +49,7 @@ void ParkingLot::ProcessSchedule(const std::vector<Segment>& schedule)
     }
 }
 
-bool ParkingLot::IsDayCross(const Segment& segment) const
+bool ParkingLot::IsDayCross(const Segment& segment)
 {
     return segment.m_minuteStart > segment.m_minuteEnd;
 }

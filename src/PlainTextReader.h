@@ -20,12 +20,9 @@ public:
 
 public:
     // Implements ISegmentReader
-    virtual const std::vector<Segment>& GetSchedule() override;
-
-private:
-    void ParseSchedule();
+    virtual bool GetSegment(Segment& segment) override;
+    virtual bool IsOpen() const override;
 
 private:
     std::ifstream        m_textFile;
-    std::vector<Segment> m_schedule;
 };
