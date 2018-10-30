@@ -5,6 +5,6 @@
 Execute `make` in the project directory.
 
 ### Run
-`./make data/simple.txt`
+`./main data/simple.txt`
 
 The second argument represents the path to the parking lot schedule file. Example of the schedule is located in the folder *data*.
