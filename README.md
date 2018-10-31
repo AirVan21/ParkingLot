@@ -8,3 +8,6 @@ Execute `make` in the project directory.
 `./main data/simple.txt`
 
 The second argument represents the path to the parking lot schedule file. Example of the schedule is located in the folder *data*.
+
+### Extra
+The `scripts` folder contains a simple python code for simple schedule generation. Execute `python3 generator.py -h` to see how to use it.
